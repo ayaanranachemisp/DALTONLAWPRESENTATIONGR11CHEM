@@ -259,47 +259,64 @@
            ========================================== */
         .whiteboard-view {
             background-color: var(--brick-dark);
-            display: flex; align-items: center; justify-content: center; padding: 2vh 2vw;
+            display: flex; align-items: center; justify-content: center; padding: 1vh 1vw;
         }
         .wb-frame {
-            width: 94%; height: 92vh; background: #ffffff; border: 16px solid var(--wb-border);
-            border-bottom-width: 45px; border-radius: 8px; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            position: relative; padding: 25px; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 30px;
+            width: 98%; height: 98vh; background: #ffffff; border: 16px solid var(--wb-border);
+            border-bottom-width: 55px; border-radius: 8px; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            position: relative; padding: 30px; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 35px;
             box-sizing: border-box;
         }
         .column-info { display: flex; flex-direction: column; justify-content: space-between; height: 100%; min-height: 0; }
-        .column-graphics { background: #f8fafc; border-radius: 10px; border: 2px dashed #cbd5e1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; height: 100%; min-height: 0; box-sizing: border-box; }
+        .column-graphics { background: #f8fafc; border-radius: 10px; border: 2px dashed #cbd5e1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; height: 100%; min-height: 0; box-sizing: border-box; }
         
-        .wb-title { font-size: 1.8rem; color:\ #0f172a; border-bottom: 4px solid var(--wb-marker-blue); padding-bottom: 6px; margin-bottom: 12px; flex-shrink: 0; }
-        .wb-scrollbox { font-size: 1.00rem; line-height: 1.45; color: #334155; overflow-y: auto; padding-right: 10px; flex-grow: 1; min-height: 0; }
-        .wb-scrollbox ul { padding-left: 20px; margin-bottom: 10px; }
-        .wb-scrollbox li { margin-bottom: 6px; }
+        .wb-title { font-size: 2.3rem; color: #0f172a; border-bottom: 5px solid var(--wb-marker-blue); padding-bottom: 8px; margin-bottom: 15px; flex-shrink: 0; font-weight: bold; }
+        .wb-scrollbox { font-size: 1.6rem; line-height: 1.5; color: #1e293b; overflow-y: auto; padding-right: 15px; flex-grow: 1; min-height: 0; }
+        .wb-scrollbox ul { padding-left: 25px; margin-bottom: 12px; }
+        .wb-scrollbox li { margin-bottom: 12px; }
         
-        #stage-theory .wb-scrollbox {
+        /* Base whiteboard text nodes font size reduction */
+        #stage-theory .wb-scrollbox,
+        #stage-kmt .wb-scrollbox {
+            font-size: 1.45rem;
+        }
+
+        /* Module 2: Decreased to 1.25rem */
+        #stage-history .wb-scrollbox {
             font-size: 1.25rem;
         }
 
+        /* Module 4: Decreased to 1.40rem */
+        #stage-math .wb-scrollbox {
+            font-size: 1.40rem;
+        }
+
+        /* Module 6: Decreased by an additional 0.10rem (from 1.20rem down to 1.10rem) */
+        #stage-macro .wb-scrollbox {
+            font-size: 1.10rem;
+        }
+
         .btn-back { 
-            background: var(--wb-marker-red); color: white; border: none; padding: 10px 30px; 
-            border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 10px; flex-shrink: 0;
+            background: var(--wb-marker-red); color: white; border: none; padding: 12px 35px; 
+            border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 15px; flex-shrink: 0;
         }
 
         /* Whiteboard Custom Simulated Visualizations */
-        .kmt-particle-box { width: 100%; height: 100%; min-height: 150px; background: #0f172a; border-radius: 8px; position: relative; overflow: hidden; }
-        .kmt-dot { position: absolute; width: 8px; height: 8px; background: var(--neon-blue); border-radius: 50%; }
+        .kmt-particle-box { width: 100%; height: 100%; min-height: 200px; background: #0f172a; border-radius: 8px; position: relative; overflow: hidden; }
+        .kmt-dot { position: absolute; width: 10px; height: 10px; background: var(--neon-blue); border-radius: 50%; }
         
         /* Calculations Matrix Layout */
-        .math-grid { display: flex; flex-direction: column; gap: 10px; width: 95%; text-align: center; }
-        .math-card { background: #fff; border: 2px solid #e2e8f0; padding: 8px 12px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .math-grid { display: flex; flex-direction: column; gap: 15px; width: 100%; text-align: center; }
+        .math-card { background: #fff; border: 2px solid #e2e8f0; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
         /* Quiz Specific Framework Styling */
         .quiz-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
         .quiz-option { 
-            width: 100%; padding: 10px 15px; margin: 6px 0; background: #f1f5f9; border: 2px solid #cbd5e1; 
-            border-radius: 6px; text-align: left; font-size: 0.95rem; cursor: pointer; transition: all 0.2s;
+            width: 100%; padding: 15px 20px; margin: 10px 0; background: #f1f5f9; border: 2px solid #cbd5e1; 
+            border-radius: 8px; text-align: left; font-size: 1.4rem; cursor: pointer; transition: all 0.2s; font-weight: 500;
         }
         .quiz-option:hover { background: #e2e8f0; border-color: #94a3b8; }
-        .quiz-feedback { margin-top: 10px; font-weight: bold; font-size: 1rem; min-height: 22px; }
+        .quiz-feedback { margin-top: 15px; font-weight: bold; font-size: 1.5rem; min-height: 30px; }
 
         /* ==========================================
            EXACT PHET LABORATORY SIMULATOR INTERFACE
@@ -357,7 +374,7 @@
             width: 100%; accent-color: var(--phet-green) !important; cursor: pointer; margin: 2px 0; display: inline-block; pointer-events: auto !important; position: relative; z-index: 1000;
         }
         .unit-selector { display: flex; background: #2c3e50; border: 2px solid #7f8c8d; border-radius: 5px; overflow: hidden; pointer-events: auto !important; position: relative; z-index: 1000; }
-        .unit-btn { background: transparent; border: none; padding: 4px 10px; color: #bdc3c7; font-weight: bold; font-size: 0.8em; cursor: pointer; transition: background 0.15s; pointer-events: auto !important; }
+        .unit-btn { background: transparent; border: none; padding: 4px 10px; color: #bdc3c7; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: background 0.15s; pointer-events: auto !important; }
         .unit-btn.active { background: var(--phet-green); color: #111; }
         .blend-hud { font-weight: bold; font-family: monospace; color: #fff; background: rgba(0,0,0,0.2); padding: 4px; border-radius: 5px; width: 95%; box-sizing: border-box; margin-top: 2px; font-size: 0.75em; text-align: center; }
         
@@ -498,11 +515,11 @@
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
                 <div class="column-graphics">
-                    <h3 style="color:var(--wb-marker-blue); margin-bottom:15px; font-size:1.1rem; flex-shrink:0;">The Main Formula</h3>
-                    <div style="font-size:1.2rem; font-weight:bold; color:#1e293b; background:#e2e8f0; padding:15px; border-radius:8px; text-align:center; width:100%; flex-shrink:0; box-sizing:border-box;">
+                    <h3 style="color:var(--wb-marker-blue); margin-bottom:20px; font-size:1.6rem; flex-shrink:0; font-weight:bold;">The Main Formula</h3>
+                    <div style="font-size:2rem; font-weight:bold; color:#1e293b; background:#e2e8f0; padding:25px; border-radius:8px; text-align:center; width:100%; flex-shrink:0; box-sizing:border-box; letter-spacing: 1px;">
                         P<sub>Total</sub> = P<sub>N<sub>2</sub></sub> + P<sub>O<sub>2</sub></sub> + P<sub>Ar</sub> + P<sub>CO<sub>2</sub></sub>
                     </div>
-                    <p style="font-size:0.85rem; font-weight:bold; color:#b91c1c; margin-top:20px; text-align:center; flex-shrink:0;">
+                    <p style="font-size:1.3rem; font-weight:bold; color:#b91c1c; margin-top:30px; text-align:center; flex-shrink:0;">
                         NOTE: P<sub>Dry Gas</sub> = P<sub>Total</sub> - P<sub>Water Vapor</sub>
                     </p>
                 </div>
@@ -527,9 +544,9 @@
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
                 <div class="column-graphics">
-                    <div style="padding:15px; border-left:5px solid var(--wb-marker-purple); background:#f3e8ff; border-radius:4px; height:100%; display:flex; flex-direction:column; justify-content:center;">
-                        <h4 style="color:#6b21a8; margin-bottom:5px; font-size:1rem;">Dalton's Atmospheric Insight</h4>
-                        <p style="color:#3b0764; font-size:0.85rem; line-height:1.45;">Instead of viewing air as a single, uniform substance, Dalton realized it is actually a crowded room of independent gas particles, all bouncing around and exerting their own pressure at the same exact time.</p>
+                    <div style="padding:25px; border-left:6px solid var(--wb-marker-purple); background:#f3e8ff; border-radius:4px; height:100%; display:flex; flex-direction:column; justify-content:center;">
+                        <h4 style="color:#6b21a8; margin-bottom:12px; font-size:1.5rem; font-weight:bold;">Dalton's Atmospheric Insight</h4>
+                        <p style="color:#3b0764; font-size:1.3rem; line-height:1.5;">Instead of viewing air as a single, uniform substance, Dalton realized it is actually a crowded room of independent gas particles, all bouncing around and exerting their own pressure at the same exact time.</p>
                     </div>
                 </div>
             </div>
@@ -554,7 +571,7 @@
                 </div>
                 <div class="column-graphics" style="justify-content: space-between;">
                     <div class="kmt-particle-box" id="kmt-box"></div>
-                    <div style="font-size:0.8rem; font-weight:bold; color:#1e293b; text-align:center; flex-shrink:0; margin-top:5px;">
+                    <div style="font-size:1.2rem; font-weight:bold; color:#1e293b; text-align:center; flex-shrink:0; margin-top:15px;">
                         More Total Moles (n) &rarr; More Wall Collisions &rarr; Higher Total Pressure (P<sub>Total</sub>)
                     </div>
                 </div>
@@ -567,7 +584,7 @@
                     <div>
                         <h2 class="wb-title">Slide 4: Mole Fraction and Calculations</h2>
                         <div class="wb-scrollbox">
-                            <p style="margin-bottom: 8px; font-weight: bold; color: #475569;">This slide covers the mathematical theory and the procedural steps for solving problems.</p>
+                            <p style="margin-bottom: 12px; font-weight: bold; color: #475569;">This slide covers the mathematical theory and the procedural steps for solving problems.</p>
                             <ul>
                                 <li><strong>Mole Fraction (X<sub>i</sub>):</strong> A ratio showing what fraction of the total particles belongs to a specific gas.</li>
                                 <li><strong>Relation to Pressure:</strong> A gas’s partial pressure is directly proportional to its mole fraction.</li>
@@ -585,17 +602,17 @@
                 <div class="column-graphics" style="justify-content: space-between;">
                     <div class="math-grid">
                         <div class="math-card">
-                            <h4 style="color:var(--wb-marker-blue); font-size:0.8rem; font-weight:bold;">Mole Fraction Formula</h4>
-                            <div style="font-size:1rem; font-weight:bold; color:#1e293b;">X<sub>i</sub> = n<sub>i</sub> / n<sub>Total</sub></div>
+                            <h4 style="color:var(--wb-marker-blue); font-size:1.2rem; font-weight:bold; margin-bottom:4px;">Mole Fraction Formula</h4>
+                            <div style="font-size:1.6rem; font-weight:bold; color:#1e293b;">X<sub>i</sub> = n<sub>i</sub> / n<sub>Total</sub></div>
                         </div>
                         <div class="math-card">
-                            <h4 style="color:var(--wb-marker-green); font-size:0.8rem; font-weight:bold;">Partial Pressure Formula</h4>
-                            <div style="font-size:1rem; font-weight:bold; color:#1e293b;">P<sub>i</sub> = X<sub>i</sub> &times; P<sub>Total</sub></div>
+                            <h4 style="color:var(--wb-marker-green); font-size:1.2rem; font-weight:bold; margin-bottom:4px;">Partial Pressure Formula</h4>
+                            <div style="font-size:1.6rem; font-weight:bold; color:#1e293b;">P<sub>i</sub> = X<sub>i</sub> &times; P<sub>Total</sub></div>
                         </div>
                     </div>
-                    <div style="background:#f1f5f9; border:2px solid #cbd5e1; padding:6px; border-radius:6px; font-size:0.75rem; text-align:center; font-weight:bold; color:#0f172a; width:100%; box-sizing:border-box; flex-shrink:0;">
+                    <div style="background:#f1f5f9; border:2px solid #cbd5e1; padding:12px; border-radius:6px; font-size:1.1rem; text-align:center; font-weight:bold; color:#0f172a; width:100%; box-sizing:border-box; flex-shrink:0; line-height:1.4;">
                         The Golden Rule: You can never add pressures with different units! Use these first:<br>
-                        <span style="color:#b91c1c; font-size:0.8rem;">1 atm = 101.3 kPa = 760 mmHg</span>
+                        <span style="color:#b91c1c; font-size:1.2rem; font-weight:bold; display:block; margin-top:4px;">1 atm = 101.3 kPa = 760 mmHg</span>
                     </div>
                 </div>
             </div>
@@ -690,13 +707,13 @@
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
                 <div class="column-graphics">
-                    <div style="background:#eff6ff; padding:15px; border-radius:6px; border:1px solid #bfdbfe; width:100%; box-sizing:border-box;">
-                        <h4 style="color:#1e40af; margin-bottom:5px; text-align:center; font-size:0.9rem;">Diving Physics Formula</h4>
-                        <div style="font-family:monospace; font-size:1rem; font-weight:bold; background:#fff; padding:10px; border-radius:4px; border:1px solid #dbeafe; text-align:center;">
+                    <div style="background:#eff6ff; padding:20px; border-radius:6px; border:1px solid #bfdbfe; width:100%; box-sizing:border-box;">
+                        <h4 style="color:#1e40af; margin-bottom:8px; text-align:center; font-size:1.3rem; font-weight:bold;">Diving Physics Formula</h4>
+                        <div style="font-family:monospace; font-size:1.6rem; font-weight:bold; background:#fff; padding:12px; border-radius:4px; border:1px solid #dbeafe; text-align:center;">
                             P<sub>i</sub> = X<sub>i</sub> &times; P<sub>Total</sub>
                         </div>
                     </div>
-                    <p style="font-size:0.75rem; color:#64748b; margin-top:15px; text-align:center;">Altering X<sub>i</sub> counteracts spikes in high hydrostatic pressure environmental systems.</p>
+                    <p style="font-size:1.1rem; color:#64748b; margin-top:20px; text-align:center; font-weight:500;"></p>
                 </div>
             </div>
         </div>
@@ -707,17 +724,17 @@
                     <div class="quiz-container">
                         <div>
                             <h2 class="wb-title">07 / Summary Quiz!! </h2>
-                            <div id="quiz-question-text" style="font-size:1.05rem; color:#1e293b; margin-bottom:10px; font-weight:600;">Loading assessment module...</div>
+                            <div id="quiz-question-text" style="font-size:1.5rem; color:#1e293b; margin-bottom:15px; font-weight:600; line-height:1.45;">Loading assessment module...</div>
                             <div id="quiz-options-box"></div>
                         </div>
                         <div class="quiz-feedback" id="quiz-feedback-lbl"></div>
                     </div>
-                    <button class="btn-back" style="margin-top:10px;" onclick="returnToHub()">Back to Lab</button>
+                    <button class="btn-back" style="margin-top:15px;" onclick="returnToHub()">Back to Lab</button>
                 </div>
-                <div class="column-graphics" style="justify-content:flex-start; padding-top:20px;">
-                    <h3 style="color:var(--wb-border); margin-bottom:10px; font-size:1.1rem;">Score</h3>
-                    <div style="font-size:2.8rem; font-weight:bold; color:var(--wb-marker-green);" id="quiz-score-lbl">0 / 3</div>
-                    <p style="color:#64748b; font-size:0.8rem; margin-top:5px; text-align:center;">Complete all problem sets to master Dalton's Law.</p>
+                <div class="column-graphics" style="justify-content:flex-start; padding-top:30px;">
+                    <h3 style="color:var(--wb-border); margin-bottom:12px; font-size:1.6rem; font-weight:bold;">Score</h3>
+                    <div style="font-size:4rem; font-weight:bold; color:var(--wb-marker-green);" id="quiz-score-lbl">0 / 3</div>
+                    <p style="color:#64748b; font-size:1.1rem; margin-top:15px; text-align:center; font-weight:500;">Complete all problem sets to master Dalton's Law.</p>
                 </div>
             </div>
         </div>
