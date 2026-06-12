@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excellent Quality Presentation: Dalton's Law Interactive Lesson Hub</title>
+    <title>Dalton's Law Interactive Lesson</title>
     <style>
         :root {
             /* Structural & Hub Theme Colors */
@@ -67,16 +68,14 @@
             overflow-y: auto;
         }
 
-        /* ==========================================
-           MAIN LABORATORY HUB ROOM (STAGE 1)
-           ========================================== */
+        /* Main lab room */
         #hub-room {
             background: linear-gradient(to bottom, #1e293b 0%, #0f172a 40%, #020617 100%);
             position: relative;
             overflow: hidden;
         }
 
-        /* Ambient Classroom Aesthetics */
+        /* Classroom look */
         .brick-wall {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 40%;
@@ -145,7 +144,7 @@
         .bench-drawer.opened .drawer-handle { transform: translateX(-50%) translateY(25px); }
         .bench-drawer.opened .drawer-contents { opacity: 1; transform: translateY(0); }
 
-        /* --- INTERACTIVE APPARATUS NODES --- */
+        /* Clickable lesson stations */
         .interactive-prop {
             position: absolute; cursor: pointer; z-index: 20; transition: transform 0.2s ease;
         }
@@ -222,8 +221,18 @@
             width: 12px; height: 8px; background: #1e293b; position: absolute; top: 34px; left: 50%; transform: translateX(-50%); z-index: 3;
         }
 
+        #prop-safety {
+            bottom: 140px; left: 68%; width: 120px; height: 145px;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+        }
+        .safety-card {
+            width: 82px; height: 95px; background: #fef3c7; border: 4px solid #f59e0b;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 42px; box-shadow: 0 8px 16px rgba(0,0,0,0.35);
+        }
+
         #prop-quiz {
-            bottom: 140px; left: 78%; width: 130px; height: 190px;
+            bottom: 140px; left: 83%; width: 130px; height: 190px;
             display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
         }
         
@@ -254,136 +263,107 @@
         .interactive-prop:hover .proximity-tag { opacity: 1; transform: translateY(0); }
         .interactive-prop:hover { transform: scale(1.06); }
 
-        /* ==========================================
-           STANDARD LESSON WHITEBOARD STYLING
-           ========================================== */
+        /* Whiteboard screens */
         .whiteboard-view {
             background-color: var(--brick-dark);
-            display: flex; align-items: center; justify-content: center; padding: 1vh 1vw;
+            display: flex; align-items: center; justify-content: center; padding: 30px;
         }
         .wb-frame {
-            width: 98%; height: 98vh; background: #ffffff; border: 16px solid var(--wb-border);
-            border-bottom-width: 55px; border-radius: 8px; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            position: relative; padding: 30px; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 35px;
-            box-sizing: border-box;
+            width: 94%; height: 88%; background: #ffffff; border: 16px solid var(--wb-border);
+            border-bottom-width: 45px; border-radius: 8px; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            position: relative; padding: 35px; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 30px;
         }
-        .column-info { display: flex; flex-direction: column; justify-content: space-between; height: 100%; min-height: 0; }
-        .column-graphics { background: #f8fafc; border-radius: 10px; border: 2px dashed #cbd5e1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; height: 100%; min-height: 0; box-sizing: border-box; }
+        .column-info { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .column-graphics { background: #f8fafc; border-radius: 10px; border: 2px dashed #cbd5e1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
         
-        .wb-title { font-size: 2.3rem; color: #0f172a; border-bottom: 5px solid var(--wb-marker-blue); padding-bottom: 8px; margin-bottom: 15px; flex-shrink: 0; font-weight: bold; }
-        .wb-scrollbox { font-size: 1.6rem; line-height: 1.5; color: #1e293b; overflow-y: auto; padding-right: 15px; flex-grow: 1; min-height: 0; }
-        .wb-scrollbox ul { padding-left: 25px; margin-bottom: 12px; }
-        .wb-scrollbox li { margin-bottom: 12px; }
-        
-        /* Base whiteboard text nodes font size reduction */
-        #stage-theory .wb-scrollbox,
-        #stage-kmt .wb-scrollbox {
-            font-size: 1.45rem;
-        }
-
-        /* Module 2: Decreased to 1.25rem */
-        #stage-history .wb-scrollbox {
-            font-size: 1.25rem;
-        }
-
-        /* Module 4: Decreased to 1.40rem */
-        #stage-math .wb-scrollbox {
-            font-size: 1.40rem;
-        }
-
-        /* Module 6: Decreased by an additional 0.10rem (from 1.20rem down to 1.10rem) */
-        #stage-macro .wb-scrollbox {
-            font-size: 1.10rem;
-        }
-
+        .wb-title { font-size: 2.2rem; color: #0f172a; border-bottom: 4px solid var(--wb-marker-blue); padding-bottom: 6px; margin-bottom: 12px; }
+        .wb-scrollbox { font-size: 1.05rem; line-height: 1.55; color: #334155; overflow-y: auto; padding-right: 10px; }
+        .wb-scrollbox ul { padding-left: 20px; margin-bottom: 10px; }
+        .wb-scrollbox li { margin-bottom: 8px; }
         .btn-back { 
             background: var(--wb-marker-red); color: white; border: none; padding: 12px 35px; 
-            border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 15px; flex-shrink: 0;
+            border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-transform: uppercase;
         }
 
         /* Whiteboard Custom Simulated Visualizations */
-        .kmt-particle-box { width: 100%; height: 100%; min-height: 200px; background: #0f172a; border-radius: 8px; position: relative; overflow: hidden; }
-        .kmt-dot { position: absolute; width: 10px; height: 10px; background: var(--neon-blue); border-radius: 50%; }
+        .kmt-particle-box { width: 100%; height: 200px; background: #0f172a; border-radius: 8px; position: relative; overflow: hidden; }
+        .kmt-dot { position: absolute; width: 8px; height: 8px; background: var(--neon-blue); border-radius: 50%; }
         
         /* Calculations Matrix Layout */
-        .math-grid { display: flex; flex-direction: column; gap: 15px; width: 100%; text-align: center; }
-        .math-card { background: #fff; border: 2px solid #e2e8f0; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .math-grid { display: flex; flex-direction: column; gap: 10px; width: 95%; text-align: center; }
+        .math-card { background: #fff; border: 2px solid #e2e8f0; padding: 8px 12px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
         /* Quiz Specific Framework Styling */
-        .quiz-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
+        .quiz-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
         .quiz-option { 
-            width: 100%; padding: 15px 20px; margin: 10px 0; background: #f1f5f9; border: 2px solid #cbd5e1; 
-            border-radius: 8px; text-align: left; font-size: 1.4rem; cursor: pointer; transition: all 0.2s; font-weight: 500;
+            width: 100%; padding: 12px 20px; margin: 8px 0; background: #f1f5f9; border: 2px solid #cbd5e1; 
+            border-radius: 6px; text-align: left; font-size: 1.05rem; cursor: pointer; transition: all 0.2s;
         }
         .quiz-option:hover { background: #e2e8f0; border-color: #94a3b8; }
-        .quiz-feedback { margin-top: 15px; font-weight: bold; font-size: 1.5rem; min-height: 30px; }
+        .quiz-feedback { margin-top: 15px; font-weight: bold; font-size: 1.1rem; min-height: 25px; }
 
-        /* ==========================================
-           EXACT PHET LABORATORY SIMULATOR INTERFACE
-           ========================================= */
+        /* Gas simulation screen */
         .phet-view {
             background-color: var(--bg-color) !important;
             color: var(--text-light) !important;
-            padding: 10px 15px;
+            padding: 15px;
             text-align: center;
             overflow-y: auto;
         }
         .phet-view h1 { 
-            margin: 2px 0; font-size: 1.5em; font-weight: bold; 
+            margin: 5px 0; font-size: 1.7em; font-weight: bold; 
             color: var(--text-light); text-shadow: 1px 1px 2px rgba(0,0,0,0.3); 
         }
-        .phet-view .subtitle { color: #bdc3c7; margin-bottom: 8px; font-size: 0.8em; }
+        .phet-view .subtitle { color: #bdc3c7; margin-bottom: 15px; font-size: 0.85em; }
         
         #phet-wrapper { 
-            max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; height: calc(100vh - 70px); justify-content: space-between;
+            max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; 
         }
         #phet-workspace { 
-            display: flex; gap: 15px; width: 100%; justify-content: center; flex-grow: 1; min-height: 0;
+            display: flex; gap: 15px; width: 100%; justify-content: center; 
         }
         .pump-station { 
             background: var(--panel-color); border: 3px solid var(--border-color); border-radius: 10px; 
-            padding: 8px; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-            position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.2); min-height: 0;
+            padding: 12px; flex: 1; display: flex; flex-direction: column; align-items: center; 
+            position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
         }
         .pump-station h2 { 
-            font-size: 0.9em; margin: 0 0 4px 0; font-weight: bold; background: rgba(0,0,0,0.2); 
-            padding: 2px 8px; border-radius: 4px; width: 90%; text-align: center;
+            font-size: 1em; margin: 0 0 8px 0; font-weight: bold; background: rgba(0,0,0,0.2); 
+            padding: 4px 10px; border-radius: 4px; width: 90%; text-align: center;
         }
         .pump-station canvas { 
             background: #111; border: 2px solid #2c3e50; border-radius: 6px; 
-            width: 100%; max-width: 250px; flex-grow: 1; min-height: 0; box-sizing: border-box; display: block;
+            width: 100%; max-width: 250px; box-sizing: border-box; display: block;
         }
         .gauge-readout { 
-            background: #111; padding: 4px 8px; border-radius: 5px; font-family: monospace; 
-            font-size: 1rem; font-weight: bold; border: 1px solid #444; width: 85%; 
-            margin: 4px 0; color: var(--phet-green); text-shadow: 0 0 5px rgba(46,204,113,0.3); 
-            text-align: center; flex-shrink: 0;
+            background: #111; padding: 6px 12px; border-radius: 5px; font-family: monospace; 
+            font-size: 1.1em; font-weight: bold; border: 1px solid #444; width: 85%; 
+            margin: 8px 0; color: var(--phet-green); text-shadow: 0 0 5px rgba(46,204,113,0.3); 
+            text-align: center;
         }
         
         #phet-dashboard { 
-            background: var(--panel-color); border: 3px solid var(--border-color); padding: 10px; 
+            background: var(--panel-color); border: 3px solid var(--border-color); padding: 15px; 
             border-radius: 10px; display: flex; flex-wrap: wrap; justify-content: space-around; 
-            align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); flex-shrink: 0;
+            align-items: center; gap: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
         }
-        .slider-group { display: flex; flex-direction: column; text-align: left; min-width: 160px; }
-        .slider-group label { font-size: 0.75em; font-weight: bold; color: #bdc3c7; text-transform: uppercase; margin-bottom: 2px; }
+        .slider-group { display: flex; flex-direction: column; text-align: left; min-width: 170px; }
+        .slider-group label { font-size: 0.8em; font-weight: bold; color: #bdc3c7; text-transform: uppercase; margin-bottom: 2px; }
         .slider-group span.val { float: right; color: #fff; font-weight: bold; }
         
         /* Interactive Input Overrides */
         .phet-view input[type=range] { 
-            width: 100%; accent-color: var(--phet-green) !important; cursor: pointer; margin: 2px 0; display: inline-block; pointer-events: auto !important; position: relative; z-index: 1000;
+            width: 100%; accent-color: var(--phet-green) !important; cursor: pointer; margin: 4px 0; display: inline-block; pointer-events: auto !important; position: relative; z-index: 1000;
         }
         .unit-selector { display: flex; background: #2c3e50; border: 2px solid #7f8c8d; border-radius: 5px; overflow: hidden; pointer-events: auto !important; position: relative; z-index: 1000; }
-        .unit-btn { background: transparent; border: none; padding: 4px 10px; color: #bdc3c7; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: background 0.15s; pointer-events: auto !important; }
+        .unit-btn { background: transparent; border: none; padding: 6px 12px; color: #bdc3c7; font-weight: bold; font-size: 0.85em; cursor: pointer; transition: background 0.15s; pointer-events: auto !important; }
         .unit-btn.active { background: var(--phet-green); color: #111; }
-        .blend-hud { font-weight: bold; font-family: monospace; color: #fff; background: rgba(0,0,0,0.2); padding: 4px; border-radius: 5px; width: 95%; box-sizing: border-box; margin-top: 2px; font-size: 0.75em; text-align: center; }
+        .blend-hud { font-weight: bold; font-family: monospace; color: #fff; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 5px; width: 95%; box-sizing: border-box; margin-top: 4px; font-size: 0.85em; text-align: center; }
         
-        .phet-footer-nav { margin-top: 5px; display: flex; justify-content: center; flex-shrink: 0; }
-        .btn-phet-exit { background: var(--wb-marker-red); color: white; border: none; padding: 8px 20px; border-radius: 5px; font-size: 0.85em; font-weight: bold; cursor: pointer; text-transform: uppercase; pointer-events: auto !important; position: relative; z-index: 1000; }
+        .phet-footer-nav { margin-top: 10px; display: flex; justify-content: center; }
+        .btn-phet-exit { background: var(--wb-marker-red); color: white; border: none; padding: 10px 24px; border-radius: 5px; font-size: 0.9em; font-weight: bold; cursor: pointer; text-transform: uppercase; pointer-events: auto !important; position: relative; z-index: 1000; }
 
-        /* ==========================================
-           AVATAR MECHANICS (JOHN DALTON)
-           ========================================== */
+        /* John Dalton drag character */
         #avatar-container {
             position: absolute; width: 120px; height: 150px; cursor: grab; z-index: 500; touch-action: none; display: flex; flex-direction: column; align-items: center;
         }
@@ -395,12 +375,476 @@
             position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: var(--hud-bg); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 12px 28px; border-radius: 30px; z-index: 1000;
         }
         .hud-text { color: white; font-size: 13px; font-weight: bold; }
+
+
+        /* Readability + projector cleanup added after review */
+        :root { --station-label-size: clamp(0.82rem, 1.15vw, 1.08rem); }
+
+        #global-hud { padding: 14px 32px; }
+        .hud-text { font-size: clamp(0.95rem, 1.15vw, 1.2rem); }
+
+        .interactive-prop { text-align: center; }
+        .interactive-prop span,
+        .interactive-prop h4,
+        .interactive-prop div[style*="font-size"] {
+            font-size: var(--station-label-size) !important;
+            line-height: 1.2 !important;
+        }
+        .proximity-tag {
+            font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+            padding: 7px 12px;
+        }
+        .screen-content { font-size: clamp(0.78rem, 0.9vw, 0.95rem); line-height: 1.25; }
+        .drawer-contents {
+            width: min(360px, 90vw);
+            bottom: 92px;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            font-size: clamp(0.85rem, 1vw, 1rem);
+            line-height: 1.35;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .bench-drawer.opened .drawer-contents { transform: translateX(-50%) translateY(0); }
+
+        /* Cleaner station spacing, left-to-right lesson order */
+        #prop-theory { top: 40px; left: 22%; width: clamp(230px, 20vw, 310px); height: clamp(145px, 16vh, 175px); }
+        #prop-history { top: 48px; left: 50%; width: clamp(150px, 12vw, 185px); height: clamp(145px, 16vh, 175px); }
+        #prop-kmt { bottom: 150px; left: 4%; width: clamp(145px, 12vw, 180px); height: 125px; }
+        #prop-math { bottom: 150px; left: 20%; width: clamp(150px, 12vw, 185px); height: 130px; padding: 10px; }
+        #prop-phet { bottom: 150px; left: 37%; width: clamp(165px, 14vw, 210px); height: 145px; padding: 10px; }
+        #prop-macro { bottom: 150px; left: 56%; width: clamp(155px, 13vw, 200px); height: 155px; }
+        #prop-safety { bottom: 150px; left: 70%; width: clamp(145px, 12vw, 185px); height: 155px; }
+        #prop-quiz { bottom: 150px; left: 84%; width: clamp(130px, 11vw, 170px); height: 190px; }
+
+        /* Larger readable lesson screens */
+        .whiteboard-view { padding: clamp(16px, 2.2vw, 34px); }
+        .wb-frame {
+            width: min(96vw, 1420px);
+            height: min(91vh, 850px);
+            padding: clamp(22px, 2.5vw, 40px);
+            gap: clamp(18px, 2vw, 34px);
+            grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+        }
+        .wb-title { font-size: clamp(2rem, 3vw, 3.1rem); line-height: 1.08; margin-bottom: clamp(14px, 1.4vw, 22px); }
+        .wb-scrollbox { font-size: clamp(1.18rem, 1.55vw, 1.55rem); line-height: 1.55; }
+        .wb-scrollbox li { margin-bottom: clamp(10px, 1vw, 16px); }
+        .btn-back, .btn-phet-exit { font-size: clamp(1rem, 1.15vw, 1.25rem); padding: 14px 34px; }
+        .column-graphics { padding: clamp(18px, 2vw, 30px); }
+        .math-card { padding: clamp(12px, 1.4vw, 20px); }
+        .math-card h4 { font-size: clamp(1rem, 1.1vw, 1.3rem) !important; }
+        .math-card div { font-size: clamp(1.25rem, 1.55vw, 1.65rem) !important; }
+        .kmt-particle-box { height: clamp(220px, 30vh, 340px); }
+
+        /* Simulation screen readability */
+        .phet-view h1 { font-size: clamp(2rem, 3vw, 3rem); }
+        .phet-view .subtitle { font-size: clamp(1rem, 1.25vw, 1.25rem); }
+        #phet-wrapper { max-width: 1280px; }
+        .pump-station h2 { font-size: clamp(1rem, 1.2vw, 1.35rem); }
+        .gauge-out, .blend-hud, .slider-group label, .unit-btn { font-size: clamp(0.95rem, 1vw, 1.12rem) !important; }
+        .gauge-readout { font-size: clamp(1.15rem, 1.3vw, 1.45rem); }
+        .quiz-option { font-size: clamp(1.05rem, 1.35vw, 1.35rem); padding: 15px 22px; }
+        .quiz-feedback { font-size: clamp(1.1rem, 1.4vw, 1.45rem); }
+
+        .safety-checklist {
+            list-style: none;
+            padding-left: 0 !important;
+            display: grid;
+            gap: 12px;
+        }
+        .safety-checklist li {
+            background: #fff7ed;
+            border: 2px solid #fed7aa;
+            border-radius: 10px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: 0.18s ease;
+        }
+        .safety-checklist li.done {
+            background: #ecfdf5;
+            border-color: #86efac;
+            text-decoration: none;
+        }
+        .safety-checklist li.done::before { content: "✓ "; color: var(--wb-marker-green); font-weight: 900; }
+        .safety-mini-card {
+            background:#fff7ed; border:2px solid #fdba74; border-radius:12px;
+            padding: clamp(16px, 2vw, 26px); width:100%;
+        }
+        .safety-mini-card h3 { color:#9a3412; margin-bottom:14px; text-align:center; font-size: clamp(1.35rem, 1.7vw, 1.8rem); }
+        .safety-mini-card ol { color:#334155; line-height:1.65; padding-left:26px; font-size: clamp(1.05rem, 1.35vw, 1.35rem); }
+        .safety-note { margin-top: 16px; background:#f1f5f9; border-left: 6px solid var(--wb-marker-blue); padding: 14px 16px; border-radius: 8px; }
+
+        @media (max-width: 900px) {
+            .wb-frame { grid-template-columns: 1fr; height: auto; min-height: 92vh; }
+            .column-graphics { min-height: 230px; }
+            #phet-workspace { flex-direction: column; align-items: center; }
+            .pump-station { width: min(95%, 520px); }
+        }
+
+
+        /* Final QOL pass: cleaner layout, scrolling, larger click targets */
+        html, body { min-width: 1024px; }
+        .stage-view.active { overflow-y: auto; overflow-x: hidden; }
+        .whiteboard-view {
+            align-items: flex-start;
+            justify-content: center;
+            min-height: 100vh;
+            padding: clamp(18px, 2.4vw, 34px);
+        }
+        .wb-frame {
+            height: auto !important;
+            min-height: calc(100vh - 68px);
+            max-height: none !important;
+            overflow: visible;
+            align-items: stretch;
+        }
+        .column-info {
+            min-height: 0;
+            gap: 18px;
+        }
+        .wb-scrollbox {
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
+            padding-right: 12px;
+        }
+        .column-graphics {
+            min-height: 320px;
+            overflow: visible;
+        }
+        .btn-back, .btn-phet-exit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            min-height: 54px;
+            border-radius: 10px;
+            line-height: 1;
+            pointer-events: auto !important;
+            user-select: none;
+            touch-action: manipulation;
+            position: relative;
+            z-index: 5000;
+        }
+        .btn-back:hover, .btn-phet-exit:hover { filter: brightness(1.08); transform: translateY(-1px); }
+        .btn-back:active, .btn-phet-exit:active { transform: translateY(1px); }
+
+        /* Hub station layout: three stations on top, five below, away from the right cabinet */
+        .cabinet-unit {
+            right: 1%;
+            width: 112px;
+            height: 270px;
+            opacity: 0.55;
+            pointer-events: none;
+        }
+        .interactive-prop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            border-radius: 12px;
+            z-index: 30;
+            cursor: pointer;
+        }
+        .interactive-prop:focus-visible {
+            outline: 4px solid #facc15;
+            outline-offset: 4px;
+        }
+        /* Final hub layout: history first, main idea second, station sizes kept consistent */
+        .interactive-prop { width: clamp(185px, 14.5vw, 225px) !important; height: clamp(155px, 17vh, 175px) !important; }
+        #prop-history { top: 44px !important; left: 20% !important; }
+        #prop-theory { top: 44px !important; left: 42% !important; }
+        #prop-kmt { top: 44px !important; left: 64% !important; }
+        #prop-math { bottom: 156px !important; left: 5% !important; }
+        #prop-phet { bottom: 156px !important; left: 23% !important; }
+        #prop-macro { bottom: 156px !important; left: 41% !important; }
+        #prop-safety { bottom: 156px !important; left: 59% !important; }
+        #prop-quiz { bottom: 156px !important; left: 77% !important; }
+        #prop-quiz .clipboard-frame { transform: scale(0.82); transform-origin: center; }
+        #prop-kmt .monitor-frame, #prop-phet .phet-screen-mock { width: min(145px, 85%) !important; }
+        #prop-kmt .monitor-frame { height: 92px !important; }
+        .proximity-tag { top: -42px; z-index: 80; }
+        #lab-bench { height: 130px; }
+        .bench-drawer { margin-top: 16px; }
+        .drawer-contents { z-index: 200; }
+
+        /* Make formulas/cards readable but prevent visual crowding */
+        .math-grid { gap: clamp(12px, 1.6vw, 22px); }
+        .math-card { width: 100%; }
+        .safety-checklist li { font-size: clamp(1.05rem, 1.4vw, 1.38rem); }
+        .safety-note { font-size: clamp(1.05rem, 1.3vw, 1.3rem); line-height: 1.45; }
+
+        /* Phet simulation: allow scrolling on smaller projectors and keep exit button visible */
+        .phet-view { min-height: 100vh; overflow-y: auto !important; }
+        #phet-workspace { align-items: stretch; }
+        .phet-footer-nav {
+            position: sticky;
+            bottom: 10px;
+            z-index: 6000;
+            padding: 8px;
+            background: rgba(44, 62, 80, 0.82);
+            border-radius: 12px;
+        }
+        #phet-dashboard { margin-bottom: 6px; }
+
+
+        /* Stable simulation controls: prevents the valve slider from jumping when dragged */
+        #phet-dashboard {
+            align-items: stretch !important;
+            gap: 12px !important;
+            min-height: 96px;
+        }
+        .slider-group {
+            min-width: clamp(155px, 17vw, 220px) !important;
+            height: 74px !important;
+            justify-content: space-between !important;
+            flex: 0 0 clamp(155px, 17vw, 220px) !important;
+            overflow: visible !important;
+        }
+        .slider-group label {
+            min-height: 34px !important;
+            line-height: 1.15 !important;
+            display: block !important;
+            white-space: normal !important;
+        }
+        #slide-mix, #slide-nA, #slide-nB, #slide-temp {
+            display: block !important;
+            width: 100% !important;
+            height: 28px !important;
+            margin: 0 !important;
+            flex: 0 0 28px !important;
+        }
+        #val-mix, #val-A, #val-b, #val-temp {
+            display: inline-block;
+            min-width: 54px;
+            text-align: right;
+        }
+        .formula-display, .primary-formula, .column-graphics .math-card div {
+            font-size: clamp(1.35rem, 2.1vw, 2.25rem) !important;
+            line-height: 1.2 !important;
+        }
+
+        @media (max-height: 760px) {
+            .wb-scrollbox { max-height: none; }
+            .whiteboard-view { min-height: 100vh; }
+            .wb-frame { min-height: auto; }
+            #global-hud { top: 8px; }
+            #prop-theory, #prop-history, #prop-kmt { top: 36px !important; }
+            #prop-math, #prop-phet, #prop-macro, #prop-safety, #prop-quiz { bottom: 138px !important; }
+            #lab-bench { height: 116px; }
+        }
+
+        @media (max-width: 1100px) {
+            html, body { min-width: 0; }
+            #hub-room.stage-view.active { overflow-y: auto; }
+            .cabinet-unit { display: none; }
+            .interactive-prop { position: relative !important; left: auto !important; top: auto !important; bottom: auto !important; width: min(88vw, 420px) !important; margin: 16px auto; }
+            #hub-room { padding-top: 72px; padding-bottom: 160px; }
+            #avatar-container { display: none !important; }
+            #global-hud .hud-text::after { content: ' Tap a station to open it.'; }
+            #lab-bench { position: relative; left: auto; width: 92%; margin: 20px auto 0; }
+        }
+
+        @media (max-width: 900px) {
+            .wb-frame {
+                grid-template-columns: 1fr !important;
+                width: 96vw;
+                min-height: auto;
+            }
+            .wb-scrollbox { max-height: none; }
+            .column-graphics { min-height: 240px; }
+        }
+
+    
+
+        /* Final fix pass: larger formulas, smaller canister card, safer navigation */
+        .drawer-contents {
+            width: min(360px, 34vw) !important;
+            max-height: 125px !important;
+            overflow-y: auto !important;
+            font-size: clamp(0.78rem, 0.9vw, 0.95rem) !important;
+            line-height: 1.32 !important;
+            padding: 9px 11px !important;
+            bottom: 86px !important;
+        }
+        .bench-drawer.opened .drawer-contents { opacity: 1 !important; }
+
+        /* Make formulas readable from farther away */
+        #stage-theory .column-graphics > div,
+        #stage-math .math-card div,
+        #stage-macro .column-graphics div[style*="font-family:monospace"],
+        #stage-safety .safety-note,
+        .blend-hud,
+        #lbl-formula {
+            font-size: clamp(1.7rem, 2.35vw, 2.55rem) !important;
+            line-height: 1.25 !important;
+        }
+        #stage-math .math-card h4 {
+            font-size: clamp(1.2rem, 1.55vw, 1.65rem) !important;
+        }
+        #stage-math .math-card {
+            padding: clamp(18px, 2vw, 28px) !important;
+        }
+        #stage-math .column-graphics p,
+        #stage-theory .column-graphics p,
+        #stage-macro .column-graphics p {
+            font-size: clamp(1rem, 1.2vw, 1.25rem) !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Safety station should fit without feeling like a giant poster */
+        #stage-safety .wb-frame {
+            grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr) !important;
+        }
+        #stage-safety .wb-scrollbox {
+            max-height: none !important;
+        }
+        #stage-safety .safety-checklist {
+            gap: 8px !important;
+        }
+        #stage-safety .safety-checklist li {
+            font-size: clamp(0.98rem, 1.15vw, 1.2rem) !important;
+            line-height: 1.35 !important;
+            padding: 9px 12px !important;
+        }
+        #stage-safety .safety-note {
+            font-size: clamp(1rem, 1.15vw, 1.2rem) !important;
+            padding: 10px 12px !important;
+            margin-top: 10px !important;
+        }
+        #stage-safety .safety-mini-card {
+            padding: clamp(12px, 1.25vw, 18px) !important;
+            max-width: 360px !important;
+        }
+        #stage-safety .safety-mini-card h3 {
+            font-size: clamp(1.2rem, 1.4vw, 1.55rem) !important;
+            margin-bottom: 8px !important;
+        }
+        #stage-safety .safety-mini-card ol {
+            font-size: clamp(0.95rem, 1.08vw, 1.15rem) !important;
+            line-height: 1.45 !important;
+        }
+
+        /* Back buttons: keep them usable and not hidden under scroll areas */
+        .column-info > .btn-back {
+            align-self: flex-start !important;
+            margin-top: 14px !important;
+            flex-shrink: 0 !important;
+        }
+        #stage-safety .btn-back::before { content: "← "; }
+
+        /* Simulation: keep Back to Lab away from sliders and buttons */
+        .phet-footer-nav {
+            position: static !important;
+            bottom: auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 18px auto 8px auto !important;
+            padding: 0 !important;
+            background: transparent !important;
+            pointer-events: none !important;
+        }
+        .phet-footer-nav .btn-phet-exit {
+            pointer-events: auto !important;
+            min-width: 210px !important;
+            min-height: 58px !important;
+        }
+        #phet-dashboard {
+            margin-bottom: 0 !important;
+            position: relative !important;
+            z-index: 200 !important;
+        }
+        #phet-dashboard input[type=range],
+        #phet-dashboard button {
+            position: relative !important;
+            z-index: 300 !important;
+        }
+        .phet-view {
+            padding-bottom: 26px !important;
+        }
+
+    
+
+        /* Final interaction polish pass: projector readability + bug prevention */
+        .formula-big {
+            font-family: monospace;
+            font-size: clamp(1.45rem, 2.2vw, 2.35rem) !important;
+            font-weight: 800;
+            line-height: 1.25;
+            background: #ffffff;
+            color: #1e293b;
+            border: 3px solid #dbeafe;
+            border-radius: 12px;
+            padding: clamp(14px, 1.6vw, 24px);
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+        }
+        .formula-caption {
+            font-size: clamp(1rem, 1.3vw, 1.25rem) !important;
+            line-height: 1.35;
+        }
+        #stage-history .column-graphics p,
+        #stage-kmt .column-graphics p,
+        #stage-macro .column-graphics p {
+            font-size: clamp(1rem, 1.25vw, 1.2rem) !important;
+            line-height: 1.4;
+        }
+        .kmt-particle-box {
+            width: min(100%, 560px) !important;
+            height: clamp(260px, 42vh, 460px) !important;
+            min-height: 260px;
+            border: 4px solid #334155;
+            box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08), 0 10px 20px rgba(15,23,42,0.14);
+        }
+        .kmt-dot {
+            width: 11px !important;
+            height: 11px !important;
+        }
+        #stage-phet .pump-station:nth-child(3) h2 {
+            font-size: clamp(0.82rem, 1vw, 1rem) !important;
+            line-height: 1.15;
+        }
+        #stage-phet .blend-hud {
+            font-size: clamp(0.68rem, 0.85vw, 0.82rem) !important;
+            line-height: 1.25;
+            padding: 6px !important;
+            word-break: normal;
+        }
+        #stage-phet #lbl-formula {
+            font-size: clamp(0.7rem, 0.9vw, 0.88rem) !important;
+            white-space: normal;
+        }
+        #stage-phet #gauge-valMIX {
+            font-size: clamp(0.95rem, 1.1vw, 1.15rem) !important;
+        }
+        .quiz-option:disabled {
+            opacity: 0.72;
+            cursor: not-allowed;
+        }
+        .quiz-retry-btn {
+            margin-top: 18px;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            background: var(--wb-marker-blue);
+            color: white;
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .quiz-feedback {
+            min-height: 54px !important;
+            line-height: 1.3;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="global-hud">
-        <div class="hud-text" id="hud-alert-msg">👨‍🔬 DRAG Mini John Dalton onto any lab node to unlock a lesson phase!</div>
+        <div class="hud-text" id="hud-alert-msg">Drag John Dalton onto a station, or click a station, to open that part of the lesson.</div>
     </div>
 
     <div id="viewport">
@@ -415,42 +859,42 @@
                 <div class="cabinet-shelf"><div class="shelf-flask"></div><div class="shelf-flask"></div></div>
             </div>
 
-            <div id="prop-theory" class="interactive-prop" data-stage="stage-theory">
-                <h4 style="color:#0f172a; font-size:1.15rem; font-weight:bold; text-align:center;">1. Core Theory of Dalton’s Law </h4>
-                <div class="proximity-tag">📌 Drop here for Big Idea & Formulas</div>
+            <div id="prop-theory" class="interactive-prop" data-stage="stage-theory" tabindex="0" role="button">
+                <h4 style="color:#0f172a; font-size:1.15rem; font-weight:bold; text-align:center;">2. Main Idea & Definitions</h4>
+                <div class="proximity-tag">Open formulas</div>
             </div>
 
-            <div id="prop-history" class="interactive-prop" data-stage="stage-history">
+            <div id="prop-history" class="interactive-prop" data-stage="stage-history" tabindex="0" role="button">
                 <div style="width:50px; height:65px; background:#b45309; border-radius:3px; box-shadow:0 4px 6px rgba(0,0,0,0.3); position:relative;">
                     <div style="position:absolute; top:10px; left:8px; right:8px; bottom:10px; background:#fef08a; border:1px solid #78350f;"></div>
                 </div>
-                <span style="font-size:11px; font-weight:bold; color:#78350f; margin-top:6px; text-align:center; padding: 0 5px;">2. Historical Context & Atmospheric Research</span>
-                <div class="proximity-tag">📖 Drop here for Historical Context</div>
+                <span style="font-size:11px; font-weight:bold; color:#78350f; margin-top:6px; text-align:center; padding: 0 5px;">1. John Dalton & Background</span>
+                <div class="proximity-tag">Open background</div>
             </div>
 
-            <div id="prop-kmt" class="interactive-prop" data-stage="stage-kmt">
+            <div id="prop-kmt" class="interactive-prop" data-stage="stage-kmt" tabindex="0" role="button">
                 <div class="monitor-frame">
-                    <div class="screen-content">3.Kinetic Molecular Theory <br>(KMT) Connection </div>
+                    <div class="screen-content">3. KMT Particle<br>Collision Demo</div>
                 </div>
-                <div class="proximity-tag">🖥️ Drop here for KMT Connection</div>
+                <div class="proximity-tag">Open KMT</div>
             </div>
 
-            <div id="prop-math" class="interactive-prop" data-stage="stage-math">
-                <span style="font-size:1.15rem; font-weight:bold; color:#78350f; text-align:center;">4. Mole Fraction & Calculations </span>
-                <div class="proximity-tag">📊 Drop here for Worked Sample Problems</div>
+            <div id="prop-math" class="interactive-prop" data-stage="stage-math" tabindex="0" role="button">
+                <span style="font-size:1.15rem; font-weight:bold; color:#78350f; text-align:center;">4. Mole Fractions & Practice</span>
+                <div class="proximity-tag">Open practice</div>
             </div>
 
-            <div id="prop-phet" class="interactive-prop" data-stage="stage-phet">
+            <div id="prop-phet" class="interactive-prop" data-stage="stage-phet" tabindex="0" role="button">
                 <div class="phet-screen-mock">
                     <div class="phet-bar-mock blue"></div>
                     <div class="phet-bar-mock orange"></div>
                     <div class="phet-bar-mock"></div>
                 </div>
-                <div style="font-size: 10px; font-weight: bold; color: var(--phet-green); margin-top:2px; text-align:center;">5. Homogenous Digital Mixture Simulation</div>
-                <div class="proximity-tag">🧪 Drop here to Open Live Simulation</div>
+                <div style="font-size: 10px; font-weight: bold; color: var(--phet-green); margin-top:2px; text-align:center;">5. Gas Mixture Simulation</div>
+                <div class="proximity-tag">Open simulation</div>
             </div>
 
-            <div id="prop-macro" class="interactive-prop" data-stage="stage-macro">
+            <div id="prop-macro" class="interactive-prop" data-stage="stage-macro" tabindex="0" role="button">
                 <div class="goggles-icon-frame">
                     <div class="goggles-strap"></div>
                     <div class="goggles-bridge"></div>
@@ -459,11 +903,17 @@
                         <div class="goggles-lens"></div>
                     </div>
                 </div>
-                <span style="font-size:11px; font-weight:bold; color:#94a3b8; margin-top:5px; text-align:center;">6. Real-World Applications & Diving Physics</span>
-                <div class="proximity-tag">🤿 Drop here for Real World Applications</div>
+                <span style="font-size:11px; font-weight:bold; color:#94a3b8; margin-top:5px; text-align:center;">6. Real-World Uses</span>
+                <div class="proximity-tag">Open real-world examples</div>
             </div>
 
-            <div id="prop-quiz" class="interactive-prop" data-stage="stage-quiz">
+            <div id="prop-safety" class="interactive-prop" data-stage="stage-safety" tabindex="0" role="button">
+                <div class="safety-card">⚠️</div>
+                <span style="font-size:11px; font-weight:bold; color:#94a3b8; margin-top:5px; text-align:center;">7. Demo Safety</span>
+                <div class="proximity-tag">Open safety steps</div>
+            </div>
+
+            <div id="prop-quiz" class="interactive-prop" data-stage="stage-quiz" tabindex="0" role="button">
                 <div class="clipboard-frame">
                     <div class="clipboard-clip"></div>
                     <div class="clipboard-paper">
@@ -473,14 +923,14 @@
                         <div class="paper-line short"></div>
                     </div>
                 </div>
-                <span style="font-size:11px; font-weight:bold; color:#94a3b8; margin-top:5px; text-align:center;">7.Checkpoint Quiz</span>
-                <div class="proximity-tag">📝 Drop here to Start Quiz Challenges</div>
+                <span style="font-size:11px; font-weight:bold; color:#94a3b8; margin-top:5px; text-align:center;">8. Quick Quiz</span>
+                <div class="proximity-tag">Open quiz</div>
             </div>
 
             <div id="lab-bench">
                 <div class="bench-drawer" onclick="this.classList.toggle('opened')">
                     <div class="drawer-handle"></div>
-                    <div class="drawer-contents">🚀 Hands-on Lab: Effervescent tablet water reaction inside a closed canister produces CO₂. The internal pressure rises fast (P_total = P_air + P_CO₂ + P_H₂O) until it overcomes the lid seal, causing a loud pop!</div>
+                    <div class="drawer-contents">Film canister demo: add water, drop the tablet in, snap the lid on fast, place it lid-side down, then step back. Goggles stay on.</div>
                 </div>
             </div>
 
@@ -503,25 +953,25 @@
             <div class="wb-frame">
                 <div class="column-info">
                     <div>
-                        <h2 class="wb-title">Slide 1: Core Theory of Dalton’s Law</h2>
+                        <h2 class="wb-title">01 / Partial Pressure: Main Idea</h2>
                         <div class="wb-scrollbox">
                             <ul>
-                                <li><strong>Scientific Definition:</strong> The total pressure exerted by a mixture of non-reacting ideal gases is equal to the sum of the partial pressures of each individual gas.</li>
-                                <li><strong>Independence in Dalton’s Law:</strong> Each gas component behaves as if it completely occupies the container alone. It exerts the same pressure it would if it were the only gas present at that volume and temperature.</li>
-                                <li><strong>Water Vapor Factor:</strong> When collecting gas over water (a common lab research need), you must account for the water vapor that naturally mixes with the gas.</li>
+                                <li><strong>Gas Mixtures:</strong> Real-world gases (like air) are almost always mixtures of multiple independent components.</li>
+                                <li><strong>Partial Pressure:</strong> The individual pressure exerted by a single gas type inside a mixed container.</li>
+                                <li><strong>Independent Space:</strong> Each gas component behaves as if it completely occupies the container alone.</li>
+                                <li><strong>Dalton's Law:</strong> The total pressure of a non-reactive gas mix is exactly equal to the sum of each gas's individual partial pressure.</li>
+                                <li><strong>Why it matters:</strong> Total pressure alone doesn't show biological safety or distinct chemical reactivity limits.</li>
                             </ul>
                         </div>
                     </div>
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
                 <div class="column-graphics">
-                    <h3 style="color:var(--wb-marker-blue); margin-bottom:20px; font-size:1.6rem; flex-shrink:0; font-weight:bold;">The Main Formula</h3>
-                    <div style="font-size:2rem; font-weight:bold; color:#1e293b; background:#e2e8f0; padding:25px; border-radius:8px; text-align:center; width:100%; flex-shrink:0; box-sizing:border-box; letter-spacing: 1px;">
-                        P<sub>Total</sub> = P<sub>1<sub></sub></sub> + P<sub>2<sub></sub></sub> + P<sub>3</sub> + P<sub>4<sub></sub></sub>
+                    <h3 style="color:var(--wb-marker-blue); margin-bottom:15px;">Primary Relationship</h3>
+                    <div style="font-size:clamp(2rem, 3.2vw, 3rem); font-weight:bold; color:#1e293b; background:#e2e8f0; padding:15px; border-radius:8px; text-align:center; width:100%;">
+                        P<sub>Total</sub> = P<sub>1</sub> + P<sub>2</sub> + P<sub>3</sub> + ...
                     </div>
-                    <p style="font-size:1.3rem; font-weight:bold; color:#b91c1c; margin-top:30px; text-align:center; flex-shrink:0;">
-                        NOTE: P<sub>Dry Gas</sub> = P<sub>Total</sub> - P<sub>Water Vapor</sub>
-                    </p>
+                    <p style="font-size:0.85rem; color:#64748b; margin-top:15px; text-align:center;">Example for Atmospheric Blends:<br>P<sub>Total</sub> = P<sub>O2</sub> + P<sub>N2</sub> + P<sub>CO2</sub></p>
                 </div>
             </div>
         </div>
@@ -530,23 +980,23 @@
             <div class="wb-frame">
                 <div class="column-info">
                     <div>
-                        <h2 class="wb-title">Slide 2: Historical Context and Atmospheric Research</h2>
+                        <h2 class="wb-title">02 / John Dalton Background</h2>
                         <div class="wb-scrollbox">
                             <ul>
-                                <li><strong>The Scientist:</strong> John Dalton (1766–1844), an English chemist and physicist.</li>
-                                <li><strong>Dalton’s Past:</strong> John Dalton was a dedicated meteorologist who recorded daily weather logs for 57 years. His law didn’t come from some random thought, it was born from his Atmospheric Humidity Studies.</li>
-                                <li><strong>The Research Need:</strong> In the early 1800s, scientists were trying to understand how weather worked. Dalton needed to explain how water vapor existed in the air. He realized that the atmosphere isn't one "thing," but a mixture of separate parts.</li>
-                                <li><strong>The “Big Shift”:</strong> He moved descriptions of gas away from abstract "mysterious substances" and into strict, measurable particle counts and mathematical relationships.</li>
-                                <li><strong>Dalton’s Key Discovery:</strong> He proved that atmospheric pressure is not one gas pushing on us, but the combined independent weight of all gases in the mixture.</li>
+                                <li><strong>John Dalton (1766-1844):</strong> English chemist, physicist, and prominent early meteorologist.</li>
+                                <li><strong>Atmospheric Humidity Studies:</strong> Explored how water vapor pressure directly alters standard dry atmospheric gas totals.</li>
+                                <li><strong>Core Discovery:</strong> Discovered that P<sub>Total</sub> = P<sub>Dry Air</sub> + P<sub>Water Vapor</sub> when water vapor evaporates into a sealed dry system.</li>
+                                <li><strong>Shift to Quantitative Chemistry:</strong> Moved gas descriptions away from abstract ideas into strict, absolute particle counts.</li>
                             </ul>
                         </div>
                     </div>
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
                 <div class="column-graphics">
-                    <div style="padding:25px; border-left:6px solid var(--wb-marker-purple); background:#f3e8ff; border-radius:4px; height:100%; display:flex; flex-direction:column; justify-content:center;">
-                        <h4 style="color:#6b21a8; margin-bottom:12px; font-size:1.5rem; font-weight:bold;">Dalton's Atmospheric Insight</h4>
-                        <p style="color:#3b0764; font-size:1.3rem; line-height:1.5;">Instead of viewing air as a single, uniform substance, Dalton realized it is actually a crowded room of independent gas particles, all bouncing around and exerting their own pressure at the same exact time.</p>
+                    <div style="padding:20px; border-left:5px solid var(--wb-marker-purple); background:#f3e8ff; border-radius:10px; width:100%;">
+                        <h4 style="color:#6b21a8; margin-bottom:12px; font-size:clamp(1.15rem, 1.5vw, 1.45rem);">Key formula from this section</h4>
+                        <div class="formula-big">P<sub>Total</sub> = P<sub>Dry Air</sub> + P<sub>Water Vapor</sub></div>
+                        <p class="formula-caption" style="color:#3b0764; margin-top:14px;">This is the same idea as Dalton's Law: each gas adds its own pressure to the total.</p>
                     </div>
                 </div>
             </div>
@@ -556,24 +1006,21 @@
             <div class="wb-frame">
                 <div class="column-info">
                     <div>
-                        <h2 class="wb-title">Slide 3: KMT Connection</h2>
+                        <h2 class="wb-title">03 / Kinetic Molecular Theory</h2>
                         <div class="wb-scrollbox">
                             <ul>
-                                <li><strong>Molecular Motion Recap:</strong> Kinetic Molecular Theory (KMT) says gas particles are always moving randomly. Gas pressure is caused entirely by these particles crashing into the container walls.</li>
-                                <li><strong>Tons of Empty Space:</strong> Gas particles have negligible volume (they are so tiny compared to the huge empty space around them that they never crowd or block each other).</li>
-                                <li><strong>Zero Intermolecular Forces:</strong> Different gas types completely ignore each other. They have no attraction or repulsion, so O<sub>2</sub> molecules bounce around like N<sub>2</sub> molecules don't even exist.</li>
-                                <li><strong>These collisions just add up:</strong> Because they act completely alone, their collisions with the walls simply add up.</li>
-                                <li><strong>The Bottom Line:</strong> Dalton’s Law is just the real-world proof that gas particles act completely independent on the microscopic level.</li>
+                                <li><strong>Particle Motion:</strong> Gas particles move randomly at constant speeds, causing pressure by bouncing off walls.</li>
+                                <li><strong>Ideal Gas Interactions:</strong> Gas particles have negligible volume and zero intermolecular attractions.</li>
+                                <li><strong>Independent Collisions:</strong> Different gas types bounce off container walls without altering neighboring particles.</li>
+                                <li><strong>Additive Force:</strong> Total pressure is simply the cumulative impact of all independent molecular collisions.</li>
                             </ul>
                         </div>
                     </div>
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
-                <div class="column-graphics" style="justify-content: space-between;">
+                <div class="column-graphics">
                     <div class="kmt-particle-box" id="kmt-box"></div>
-                    <div style="font-size:1.2rem; font-weight:bold; color:#1e293b; text-align:center; flex-shrink:0; margin-top:15px;">
-                        More Total Moles (n) &rarr; More Wall Collisions &rarr; Higher Total Pressure (P<sub>Total</sub>)
-                    </div>
+                    <p style="font-size:0.85rem; color:#64748b; margin-top:8px; text-align:center;">Different gases hit the walls independently, so their pressures add together.</p>
                 </div>
             </div>
         </div>
@@ -582,52 +1029,45 @@
             <div class="wb-frame">
                 <div class="column-info">
                     <div>
-                        <h2 class="wb-title">Slide 4: Mole Fraction and Calculations</h2>
+                        <h2 class="wb-title">04 / Mole Fraction Practice</h2>
                         <div class="wb-scrollbox">
-                            <p style="margin-bottom: 12px; font-weight: bold; color: #475569;">This slide covers the mathematical theory and the procedural steps for solving problems.</p>
                             <ul>
-                                <li><strong>Mole Fraction (X<sub>i</sub>):</strong> A ratio showing what fraction of the total particles belongs to a specific gas.</li>
-                                <li><strong>Relation to Pressure:</strong> A gas’s partial pressure is directly proportional to its mole fraction.</li>
-                                <li><strong>The Three Necessary Steps to Solve:</strong><br>
-                                    1. <strong>Aggregate:</strong> Sum all individual moles to find n<sub>Total</sub>.<br>
-                                    2. <strong>Fraction:</strong> Divide the target gas moles by n<sub>Total</sub> to get the decimal ratio (X<sub>i</sub>).<br>
-                                    3. <strong>Multiply:</strong> Multiply that decimal by the absolute P<sub>Total</sub> to find the partial pressure.
-                                </li>
-                                <li><strong>ALWAYS REMEMBER:</strong> Always convert all values to the same unit before calculating.</li>
+                                <li><strong>Mole Fraction (X<sub>i</sub>):</strong> The ratio of target gas moles divided by total system moles (X<sub>i</sub> = n<sub>i</sub> / n<sub>Total</sub>).</li>
+                                <li><strong>Pressure Calculation:</strong> Individual partial pressures match mole ratios directly (P<sub>i</sub> = X<sub>i</sub> &middot; P<sub>Total</sub>).</li>
+                                <li><strong>Strict Units Rule:</strong> All pressure values must be converted to identical units before adding them together.</li>
+                                <li><strong>Constants:</strong> 1 atm = 101.3 kPa = 760 mmHg = 760 torr.</li>
+                                <li><strong>Worked Scale:</strong> 2 mol O₂ + 3 mol N₂ at 500 kPa total results in P<sub>O2</sub> = (2/5) &middot; 500 kPa = <strong>2.00 &times; 10² kPa</strong>.</li>
                             </ul>
                         </div>
                     </div>
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
-                <div class="column-graphics" style="justify-content: space-between;">
+                <div class="column-graphics">
                     <div class="math-grid">
                         <div class="math-card">
-                            <h4 style="color:var(--wb-marker-blue); font-size:1.2rem; font-weight:bold; margin-bottom:4px;">Mole Fraction Formula</h4>
-                            <div style="font-size:1.6rem; font-weight:bold; color:#1e293b;">X<sub>i</sub> = n<sub>i</sub> / n<sub>Total</sub></div>
+                            <h4 style="color:var(--wb-marker-blue); font-size:clamp(1rem,1.2vw,1.2rem); font-weight:bold;">Mole Ratio</h4>
+                            <div class="formula-big">X<sub>i</sub> = n<sub>i</sub> / n<sub>Total</sub></div>
                         </div>
                         <div class="math-card">
-                            <h4 style="color:var(--wb-marker-green); font-size:1.2rem; font-weight:bold; margin-bottom:4px;">Partial Pressure Formula</h4>
-                            <div style="font-size:1.6rem; font-weight:bold; color:#1e293b;">P<sub>i</sub> = X<sub>i</sub> &times; P<sub>Total</sub></div>
+                            <h4 style="color:var(--wb-marker-green); font-size:clamp(1rem,1.2vw,1.2rem); font-weight:bold;">Partial Pressure</h4>
+                            <div class="formula-big">P<sub>i</sub> = X<sub>i</sub> &middot; P<sub>Total</sub></div>
                         </div>
                     </div>
-                    <div style="background:#f1f5f9; border:2px solid #cbd5e1; padding:12px; border-radius:6px; font-size:1.1rem; text-align:center; font-weight:bold; color:#0f172a; width:100%; box-sizing:border-box; flex-shrink:0; line-height:1.4;">
-                        The Golden Rule: You can never add pressures with different units! Use these first:<br>
-                        <span style="color:#b91c1c; font-size:1.2rem; font-weight:bold; display:block; margin-top:4px;">1 atm = 101.3 kPa = 760 mmHg</span>
-                    </div>
+                    <p class="formula-caption" style="color:#64748b; margin-top:14px; text-align:center;">Conversion Scale:<br><strong>1 atm = 101.3 kPa = 760 mmHg</strong></p>
                 </div>
             </div>
         </div>
 
         <div id="stage-phet" class="stage-view phet-view">
-            <h1>Dalton's Law Of Partial Pressure Laboratory</h1>
-            <div class="subtitle">Interactive Homogenous Gaseous Simulation</div>
+            <h1>Dalton's Law Pressure Lab</h1>
+            <div class="subtitle">Interactive Gas Mixture Simulation</div>
 
             <div id="phet-wrapper">
                 <div id="phet-workspace">
                     <div class="pump-station">
                         <h2 style="color: #64b5f6;">System A</h2>
                         <canvas id="view-A" width="240" height="280"></canvas>
-                        <div class="gauge-out" style="color: #64b5f6; font-weight: bold; font-size: 0.8em; margin-top: 3px;">
+                        <div class="gauge-out" style="color: #64b5f6; font-weight: bold; font-size: 0.9em; margin-top: 5px;">
                             Moles : <span id="lbl-nA">2.0 mol</span>
                         </div>
                         <div class="gauge-readout" id="gauge-valA">0.00 kPa</div>
@@ -636,20 +1076,20 @@
                     <div class="pump-station">
                         <h2 style="color: #ffb74d;">System B</h2>
                         <canvas id="view-B" width="240" height="280"></canvas>
-                        <div class="gauge-out" style="color: #ffb74d; font-weight: bold; font-size: 0.8em; margin-top: 3px;">
+                        <div class="gauge-out" style="color: #ffb74d; font-weight: bold; font-size: 0.9em; margin-top: 5px;">
                             Moles : <span id="lbl-nB">3.0 mol</span>
                         </div>
                         <div class="gauge-readout" id="gauge-valB">0.00 kPa</div>
                     </div>
 
                     <div class="pump-station" style="border-color: var(--phet-green);">
-                        <h2 style="color: var(--phet-green);">Container 3: The Mixture</h2>
+                        <h2 style="color: var(--phet-green);">Mixed Container</h2>
                         <canvas id="view-MIX" width="240" height="280"></canvas>
                         <div class="blend-hud">
-                            Live Formula (<span style="color: #64b5f6;">P<sub>A</sub></span> + <span style="color: #ffb74d;">P<sub>B</sub></span> = P<sub>total</sub>):<br>
+                            Formula (<span style="color: #64b5f6;">P<sub>A</sub></span> + <span style="color: #ffb74d;">P<sub>B</sub></span> = P<sub>total</sub>):<br>
                             <span id="lbl-formula" style="color: var(--phet-green); font-weight: bold;">0.00 + 0.00 = 0.00</span>
                         </div>
-                        <div class="gauge-readout" id="gauge-valMIX" style="border-color: var(--phet-green); font-size: 1.1em;">0.00 kPa</div>
+                        <div class="gauge-readout" id="gauge-valMIX" style="border-color: var(--phet-green); font-size: 1.2em;">0.00 kPa</div>
                     </div>
                 </div>
 
@@ -682,7 +1122,7 @@
                 </div>
                 
                 <div class="phet-footer-nav">
-                    <button class="btn-phet-exit" onclick="returnToHub()">Back to Lab</button>
+                    <button class="btn-phet-exit" onclick="returnToHub()">← Back to Lab</button>
                 </div>
             </div>
         </div>
@@ -691,29 +1131,63 @@
             <div class="wb-frame">
                 <div class="column-info">
                     <div>
-                        <h2 class="wb-title">Slide 5: Real-World Applications and Diving Physics</h2>
+                        <h2 class="wb-title">06 / Real World Uses</h2>
                         <div class="wb-scrollbox">
                             <ul>
-                                <li><strong>Gas Biology:</strong> The human body responds to individual partial pressures (P<sub>i</sub>), not the general gas percentages.</li>
-                                <li><strong>Scuba Diving and Hydrostatic Pressure:</strong> For every 10 meters a diver descends into the ocean, the water weight adds 1 whole atm of total pressure. As P<sub>Total</sub> multiplies underwater, the partial pressure (P<sub>i</sub>) of every gas in the diver's lungs spikes too (P<sub>i</sub> = X<sub>i</sub> &times; P<sub>Total</sub>).</li>
-                                <li><strong>The Chemical Consequences:</strong><br>
-                                    &bull; <strong>Oxygen Toxicity:</strong> If P<sub>O<sub>2</sub></sub> goes above 1.4 atm (which happens at just 30m depth on regular air), oxygen becomes toxic to the nervous system and causes sudden seizures.<br>
-                                    &bull; <strong>Nitrogen Narcosis:</strong> High P<sub>N<sub>2</sub></sub> forces gas into nerve membranes, causing a dangerous feeling of drunkenness and impaired judgment.
-                                </li>
-                                <li><strong>The Engineering Solution (Nitrox/Trimix):</strong> Divers mix custom gas blends. By lowering the mole fraction (X<sub>i</sub>) of oxygen or nitrogen in the tank, they force the partial pressures (P<sub>i</sub>) to stay at safe, non-lethal levels even under extreme underwater pressure.</li>
+                                <li><strong>Atmospheric Makeup:</strong> Earth's air exerts roughly 101.3 kPa at sea level, combining independent contributions of N₂ (~79.0 kPa) and O₂ (~21.3 kPa).</li>
+                                <li><strong>Scuba Safety Limits:</strong> High total pressure underwater spikes gas partial pressures, risking oxygen toxicity or sudden nitrogen narcosis.</li>
+                                <li><strong>Pneumatic Gas Collection:</strong> Lab gases trapped over water mix naturally with rising water vapor.</li>
+                                <li><strong>Vapor Correction:</strong> Scientists subtract water vapor pressure from measured values to find true dry gas quantities (P<sub>Dry Gas</sub> = P<sub>Total</sub> - P<sub>Water Vapor</sub>).</li>
                             </ul>
                         </div>
                     </div>
                     <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
                 </div>
                 <div class="column-graphics">
-                    <div style="background:#eff6ff; padding:20px; border-radius:6px; border:1px solid #bfdbfe; width:100%; box-sizing:border-box;">
-                        <h4 style="color:#1e40af; margin-bottom:8px; text-align:center; font-size:1.3rem; font-weight:bold;">Diving Physics Formula</h4>
-                        <div style="font-family:monospace; font-size:1.6rem; font-weight:bold; background:#fff; padding:12px; border-radius:4px; border:1px solid #dbeafe; text-align:center;">
-                            P<sub>i</sub> = X<sub>i</sub> &times; P<sub>Total</sub>
+                    <div style="background:#eff6ff; padding:15px; border-radius:6px; border:1px solid #bfdbfe; width:100%;">
+                        <h4 style="color:#1e40af; margin-bottom:5px; text-align:center;">Vapor Correction</h4>
+                        <div style="font-family:monospace; font-size:1.05rem; font-weight:bold; background:#fff; padding:10px; border-radius:4px; border:1px solid #dbeafe; text-align:center;">
+                            P<sub>Total</sub> = P<sub>Dry Air</sub> + P<sub>Vapor</sub>
                         </div>
                     </div>
-                    <p style="font-size:1.1rem; color:#64748b; margin-top:20px; text-align:center; font-weight:500;"></p>
+                    <p style="font-size:0.8rem; color:#64748b; margin-top:15px; text-align:center;">Essential for pneumatic displacement calculations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="stage-safety" class="stage-view whiteboard-view">
+            <div class="wb-frame">
+                <div class="column-info">
+                    <div>
+                        <h2 class="wb-title">07 / Film Canister Demo Safety</h2>
+                        <div class="wb-scrollbox">
+                            <p style="margin-bottom:14px;"><strong>Tap each step when your group is ready.</strong> This station is meant to be used before the film canister pop demo.</p>
+                            <ul class="safety-checklist" id="safety-list">
+                                <li onclick="toggleSafetyStep(this)"><strong>Goggles on:</strong> Everyone close to the demo wears safety goggles before the tablet is added.</li>
+                                <li onclick="toggleSafetyStep(this)"><strong>Clear space:</strong> Keep faces, lights, phones, and breakable objects away from the canister.</li>
+                                <li onclick="toggleSafetyStep(this)"><strong>Water first:</strong> Add a small amount of water to the film canister.</li>
+                                <li onclick="toggleSafetyStep(this)"><strong>Tablet fast:</strong> Place the tablet in quickly, snap the lid on tightly, and set the canister lid-side down.</li>
+                                <li onclick="toggleSafetyStep(this)"><strong>Step back:</strong> Do not lean over it, pick it up, or touch it while pressure is building.</li>
+                                <li onclick="toggleSafetyStep(this)"><strong>Clean up:</strong> After it pops, wait a moment, then wipe the table and throw away tablet pieces.</li>
+                            </ul>
+                            <div class="safety-note"><strong>Why it pops:</strong> The tablet makes CO₂ gas. Gas pressure builds inside the closed canister until the lid seal gives way.</div>
+                        </div>
+                    </div>
+                    <button class="btn-back" onclick="returnToHub()">Back to Lab</button>
+                </div>
+                <div class="column-graphics">
+                    <div class="safety-mini-card">
+                        <h3>Fast Order</h3>
+                        <ol>
+                            <li>Goggles on</li>
+                            <li>Clear the table</li>
+                            <li>Water in canister</li>
+                            <li>Tablet in quickly</li>
+                            <li>Lid on tightly</li>
+                            <li>Place lid-side down</li>
+                            <li>Step back</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
@@ -723,18 +1197,18 @@
                 <div class="column-info">
                     <div class="quiz-container">
                         <div>
-                            <h2 class="wb-title">07 / Summary Quiz!! </h2>
-                            <div id="quiz-question-text" style="font-size:1.5rem; color:#1e293b; margin-bottom:15px; font-weight:600; line-height:1.45;">Loading assessment module...</div>
+                            <h2 class="wb-title">08 / Quick Check</h2>
+                            <div id="quiz-question-text" style="font-size:1.15rem; color:#1e293b; margin-bottom:15px; font-weight:600;">Loading question...</div>
                             <div id="quiz-options-box"></div>
                         </div>
                         <div class="quiz-feedback" id="quiz-feedback-lbl"></div>
                     </div>
-                    <button class="btn-back" style="margin-top:15px;" onclick="returnToHub()">Back to Lab</button>
+                    <button class="btn-back" style="margin-top:20px;" onclick="returnToHub()">Back to Lab</button>
                 </div>
-                <div class="column-graphics" style="justify-content:flex-start; padding-top:30px;">
-                    <h3 style="color:var(--wb-border); margin-bottom:12px; font-size:1.6rem; font-weight:bold;">Score</h3>
-                    <div style="font-size:4rem; font-weight:bold; color:var(--wb-marker-green);" id="quiz-score-lbl">0 / 3</div>
-                    <p style="color:#64748b; font-size:1.1rem; margin-top:15px; text-align:center; font-weight:500;">Complete all problem sets to master Dalton's Law.</p>
+                <div class="column-graphics" style="justify-content:flex-start; padding-top:40px;">
+                    <h3 style="color:var(--wb-border); margin-bottom:20px;">Score</h3>
+                    <div style="font-size:3.5rem; font-weight:bold; color:var(--wb-marker-green);" id="quiz-score-lbl">0 / 0</div>
+                    <p style="color:#64748b; font-size:0.9rem; margin-top:10px; text-align:center;">Answer the practice questions to check your understanding.</p>
                 </div>
             </div>
         </div>
@@ -742,12 +1216,27 @@
     </div>
 
     <script>
-        // --- DRAG ENGINE CORE ---
+        function toggleSafetyStep(step) {
+            step.classList.toggle("done");
+        }
+
+        // Drag controls
         const avatarNode = document.getElementById('avatar-container');
         const hubRoomView = document.getElementById('hub-room');
         const internalProps = document.querySelectorAll('.interactive-prop');
 
+        internalProps.forEach(prop => {
+            prop.addEventListener('click', () => { if (!draggedFarEnough) switchActiveStage(prop.getAttribute('data-stage')); });
+            prop.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    switchActiveStage(prop.getAttribute('data-stage'));
+                }
+            });
+        });
+
         let isDraggingActive = false;
+        let draggedFarEnough = false;
         let pointerOffsets = { x: 0, y: 0 };
         let currentCoordinates = { x: window.innerWidth / 2 - 60, y: window.innerHeight - 250 };
 
@@ -766,11 +1255,12 @@
 
         function startDragCycle(e) {
             isDraggingActive = true;
+            draggedFarEnough = false;
             const xVal = e.clientX || e.touches[0].clientX;
             const yVal = e.clientY || e.touches[0].clientY;
             pointerOffsets.x = xVal - avatarNode.offsetLeft;
             pointerOffsets.y = yVal - avatarNode.offsetTop;
-            document.getElementById('hud-alert-msg').innerText = "🔍 Moving John Dalton to target node...";
+            document.getElementById('hud-alert-msg').innerText = "Moving John Dalton...";
         }
 
         function movingDragCycle(e) {
@@ -780,6 +1270,7 @@
             
             let targetX = xVal - pointerOffsets.x;
             let targetY = yVal - pointerOffsets.y;
+            if (Math.abs(targetX - currentCoordinates.x) > 4 || Math.abs(targetY - currentCoordinates.y) > 4) draggedFarEnough = true;
 
             currentCoordinates.x = targetX;
             currentCoordinates.y = targetY;
@@ -798,7 +1289,7 @@
             if (hitTargetStageId) {
                 switchActiveStage(hitTargetStageId);
             } else {
-                document.getElementById('hud-alert-msg').innerText = "👨‍🔬 DRAG Mini John Dalton onto any lab node to unlock a lesson phase!";
+                document.getElementById('hud-alert-msg').innerText = "Drag John Dalton onto a station, or click a station, to open that part of the lesson.";
             }
         }
 
@@ -818,100 +1309,122 @@
             const destinationStage = document.getElementById(stageId);
             if (destinationStage) {
                 destinationStage.classList.add('active');
+                destinationStage.scrollTop = 0;
                 avatarNode.style.display = "none";
                 document.getElementById('global-hud').style.display = "none";
-                if(stageId === 'stage-quiz') {
-                    currentProblemIdx = 0;
-                    accruedScorePoints = 0;
-                    buildQuizInterfaceElement();
-                }
-                
-                // Trigger KMT box resize recalibration on tab activation
-                if (stageId === 'stage-kmt') {
-                    setTimeout(recalibrateKmtCanvasBounds, 50);
-                }
+                if(stageId === 'stage-quiz') resetQuizState();
             }
         }
 
         function returnToHub() {
             document.querySelectorAll('.stage-view').forEach(s => s.classList.remove('active'));
             hubRoomView.classList.add('active');
+            hubRoomView.scrollTop = 0;
             avatarNode.style.display = "flex";
             document.getElementById('global-hud').style.display = "block";
             
             currentCoordinates.x = window.innerWidth / 2 - 60;
             currentCoordinates.y = window.innerHeight - 250;
             setAvatarPosition();
-            document.getElementById('hud-alert-msg').innerText = "🧪 Help John Dalton test another module setup!";
+            document.getElementById('hud-alert-msg').innerText = "Drag John Dalton to another station.";
         }
 
-        // --- KMT BACKGROUND VISUAL EFFECTS GENERATOR ---
+        // KMT particle animation
         const kmtContainerBox = document.getElementById('kmt-box');
         const simulatedDotPopulation = [];
-        let kmtWidth = 240;
-        let kmtHeight = 190;
 
-        function recalibrateKmtCanvasBounds() {
-            kmtWidth = kmtContainerBox.clientWidth || 240;
-            kmtHeight = kmtContainerBox.clientHeight || 190;
+        function getKmtBounds() {
+            const width = Math.max(kmtContainerBox.clientWidth || 320, 160);
+            const height = Math.max(kmtContainerBox.clientHeight || 260, 160);
+            return { width, height };
         }
 
-        for (let i = 0; i < 20; i++) {
-            const element = document.createElement('div');
-            element.className = 'kmt-dot';
-            kmtContainerBox.appendChild(element);
-            simulatedDotPopulation.push({
-                el: element,
-                x: Math.random() * 150 + 10,
-                y: Math.random() * 100 + 10,
-                vx: (Math.random() - 0.5) * 3,
-                vy: (Math.random() - 0.5) * 3
-            });
+        function clampKmtDot(dot) {
+            const bounds = getKmtBounds();
+            dot.x = Math.min(Math.max(dot.x, 0), bounds.width - 14);
+            dot.y = Math.min(Math.max(dot.y, 0), bounds.height - 14);
         }
+
+        function buildKmtParticles() {
+            if (!kmtContainerBox) return;
+            const bounds = getKmtBounds();
+            for (let i = 0; i < 28; i++) {
+                const element = document.createElement('div');
+                element.className = 'kmt-dot';
+                kmtContainerBox.appendChild(element);
+                simulatedDotPopulation.push({
+                    el: element,
+                    x: Math.random() * Math.max(bounds.width - 18, 20),
+                    y: Math.random() * Math.max(bounds.height - 18, 20),
+                    vx: (Math.random() - 0.5) * 3.4 || 1.4,
+                    vy: (Math.random() - 0.5) * 3.4 || 1.2
+                });
+            }
+        }
+
         function animateMicroKmtParticles() {
+            if (!kmtContainerBox) return;
+            const bounds = getKmtBounds();
             simulatedDotPopulation.forEach(d => {
                 d.x += d.vx; d.y += d.vy;
-                if (d.x <= 0 || d.x >= kmtWidth - 8) d.vx *= -1;
-                if (d.y <= 0 || d.y >= kmtHeight - 8) d.vy *= -1;
+                if (d.x <= 0 || d.x >= bounds.width - 14) { d.vx *= -1; d.x = Math.min(Math.max(d.x, 0), bounds.width - 14); }
+                if (d.y <= 0 || d.y >= bounds.height - 14) { d.vy *= -1; d.y = Math.min(Math.max(d.y, 0), bounds.height - 14); }
                 d.el.style.left = d.x + 'px';
                 d.el.style.top = d.y + 'px';
             });
             requestAnimationFrame(animateMicroKmtParticles);
         }
-        window.addEventListener('resize', recalibrateKmtCanvasBounds);
+
+        buildKmtParticles();
+        window.addEventListener('resize', () => simulatedDotPopulation.forEach(clampKmtDot));
         animateMicroKmtParticles();
 
-        // --- QUIZ APPLICATION DATA & LOGIC CONTROL ---
+        // Quiz questions
         const evaluationBanks = [
-            { q: "A mixture containing 0.50 mol of H₂ and 1.50 mol of He exerts a total pressure of 200 kPa. What is the partial pressure of H₂?", a: ["25 kPa", "50 kPa", "75 kPa", "150 kPa"], c: 1 },
-            { q: "If a container holds Oxygen at 300 mmHg, Nitrogen at 400 mmHg, and Helium at 150 mmHg, what is the combined total pressure?", a: ["550 mmHg", "700 mmHg", "850 mmHg", "1000 mmHg"], c: 2 },
-            { q: "A sample of Neon gas is collected over water at a total pressure of 104.0 kPa. If the vapor pressure of water at this temperature is 3.0 kPa, what is the partial pressure of the dry Neon gas?", a: ["101.0 kPa", "107.0 kPa", "98.0 kPa", "34.6 kPa"], c: 0 }
+            { q: "According to Dalton and KMT, why do different gases in a mixture exert pressures completely independent of one another?", a: ["Because different gases attract each other", "Because ideal gas particles have no intermolecular forces and collide independently", "Because the container volume shifts dynamically", "Because temperature falls when gases mix"], c: 1 },
+            { q: "A diving tank holds 2.0 mol of Oxygen and 3.0 mol of Nitrogen at a total pressure of 500 kPa. What is the partial pressure of Oxygen?", a: ["100 kPa", "200 kPa", "250 kPa", "300 kPa"], c: 1 },
+            { q: "When collecting gas over water, you find a total pressure of 102.5 kPa. If water vapor pressure is 2.5 kPa, what is the dry gas value?", a: ["105.0 kPa", "100.0 kPa", "41.0 kPa", "256.2 kPa"], c: 1 }
         ];
         let currentProblemIdx = 0, accruedScorePoints = 0;
+        let quizLocked = false;
+        let quizAdvanceTimer = null;
+
+        function resetQuizState() {
+            currentProblemIdx = 0;
+            accruedScorePoints = 0;
+            quizLocked = false;
+            if (quizAdvanceTimer) clearTimeout(quizAdvanceTimer);
+            quizAdvanceTimer = null;
+            buildQuizInterfaceElement();
+        }
 
         function buildQuizInterfaceElement() {
-            document.getElementById('quiz-score-lbl').innerText = `${accruedScorePoints} / ${evaluationBanks.length}`;
-            
+            const questionEl = document.getElementById('quiz-question-text');
+            const optionsWrapper = document.getElementById('quiz-options-box');
+            const feedbackEl = document.getElementById('quiz-feedback-lbl');
+            const scoreEl = document.getElementById('quiz-score-lbl');
+            if (!questionEl || !optionsWrapper || !feedbackEl || !scoreEl) return;
+
+            quizLocked = false;
+            scoreEl.innerText = `${accruedScorePoints} / ${evaluationBanks.length}`;
+
             if (currentProblemIdx >= evaluationBanks.length) {
-                let finalPercent = "0%";
-                if (accruedScorePoints === 1) finalPercent = "33.33%";
-                if (accruedScorePoints === 2) finalPercent = "66.66%";
-                if (accruedScorePoints === 3) finalPercent = "100%";
-                
-                document.getElementById('quiz-question-text').innerText = `🎉 Final Review Completed! Your Score: ${finalPercent}`;
-                document.getElementById('quiz-options-box').innerHTML = "";
+                questionEl.innerText = `Review complete. Score: ${accruedScorePoints} / ${evaluationBanks.length}`;
+                optionsWrapper.innerHTML = `<button class="quiz-retry-btn" onclick="resetQuizState()">Try Quiz Again</button>`;
+                feedbackEl.style.color = accruedScorePoints === evaluationBanks.length ? "var(--wb-marker-green)" : "var(--wb-marker-red)";
+                feedbackEl.innerText = accruedScorePoints === evaluationBanks.length ? "Perfect score." : "Review the formulas, then retry.";
                 return;
             }
+
             const activeProblemObj = evaluationBanks[currentProblemIdx];
-            document.getElementById('quiz-question-text').innerText = activeProblemObj.q;
-            document.getElementById('quiz-feedback-lbl').innerText = "";
-            
-            const optionsWrapper = document.getElementById('quiz-options-box');
+            questionEl.innerText = activeProblemObj.q;
+            feedbackEl.innerText = "";
             optionsWrapper.innerHTML = "";
-            
+
             activeProblemObj.a.forEach((choice, idx) => {
                 const choiceBtn = document.createElement('button');
                 choiceBtn.className = "quiz-option";
+                choiceBtn.type = "button";
                 choiceBtn.innerText = choice;
                 choiceBtn.onclick = () => verifyAnswerChoice(idx);
                 optionsWrapper.appendChild(choiceBtn);
@@ -919,27 +1432,33 @@
         }
 
         function verifyAnswerChoice(userChosenIndex) {
-            const correctAnswerIndex = evaluationBanks[currentProblemIdx].c;
-            
-            // Clear prior buttons to prevent multi-clicking
-            document.getElementById('quiz-options-box').innerHTML = "";
-            
+            if (quizLocked || currentProblemIdx >= evaluationBanks.length) return;
+            quizLocked = true;
+            const optionsWrapper = document.getElementById('quiz-options-box');
+            if (optionsWrapper) {
+                optionsWrapper.querySelectorAll('button').forEach(btn => btn.disabled = true);
+            }
+
+            const activeProblemObj = evaluationBanks[currentProblemIdx];
+            const correctAnswerIndex = activeProblemObj.c;
+            const feedbackEl = document.getElementById('quiz-feedback-lbl');
             if (userChosenIndex === correctAnswerIndex) {
                 accruedScorePoints++;
-                document.getElementById('quiz-feedback-lbl').style.color = "var(--wb-marker-green)";
-                document.getElementById('quiz-feedback-lbl').innerText = "✓ Correct!";
+                feedbackEl.style.color = "var(--wb-marker-green)";
+                feedbackEl.innerText = "✓ Correct.";
             } else {
-                document.getElementById('quiz-feedback-lbl').style.color = "var(--wb-marker-red)";
-                document.getElementById('quiz-feedback-lbl').innerText = "✗ Incorrect";
+                feedbackEl.style.color = "var(--wb-marker-red)";
+                feedbackEl.innerText = `✗ Not quite. Correct answer: ${activeProblemObj.a[correctAnswerIndex]}`;
             }
-            
+            document.getElementById('quiz-score-lbl').innerText = `${accruedScorePoints} / ${evaluationBanks.length}`;
             currentProblemIdx++;
-            setTimeout(buildQuizInterfaceElement, 1400);
+            if (quizAdvanceTimer) clearTimeout(quizAdvanceTimer);
+            quizAdvanceTimer = setTimeout(buildQuizInterfaceElement, 950);
         }
 
-        // --- PHET CORE CODE SIMULATION ENGINE ---
+        // Gas simulation
         const canvases = { A: document.getElementById('view-A'), B: document.getElementById('view-B'), MIX: document.getElementById('view-MIX') };
-        const ctxs = { A: canvases.A.getContext('2d'), B: canvases.B.getContext('2d'), MIX: canvases.MIX.getContext('2d') };
+        const ctxs = { A: canvases.A.width ? canvases.A.getContext('2d') : null, B: canvases.B.getContext('2d'), MIX: canvases.MIX.getContext('2d') };
 
         let targetUnits = 'kPa';
         let gasMolesA = 2.0;
@@ -956,7 +1475,7 @@
                 this.radius = gasType === 'A' ? 5 : 3.5;
                 this.mass = gasType === 'A' ? 32 : 4;
                 this.x = Math.random() * (canvasW - this.radius * 4) + 15 + this.radius;
-                this.y = canvasH - (Math.random() * (100 - this.radius * 4) + 15 + this.radius);
+                this.y = canvasH - (Math.random() * (140 - this.radius * 4) + 15 + this.radius);
                 this.assignKineticSpeed();
             }
 
@@ -969,7 +1488,7 @@
 
             advancePosition(canvasW, canvasH) {
                 this.x += this.vx; this.y += this.vy;
-                const minX = 15, maxX = canvasW - 15, minY = canvasH - 115, maxY = canvasH - 15;
+                const minX = 15, maxX = canvasW - 15, minY = canvasH - 155, maxY = canvasH - 15;
                 
                 if (this.x - this.radius <= minX) { this.vx *= -1; this.x = minX + this.radius; }
                 if (this.x + this.radius >= maxX) { this.vx *= -1; this.x = maxX - this.radius; }
@@ -1023,19 +1542,9 @@
         }
 
         function renderContainerBox(ctx, w, h) {
-            ctx.fillStyle = "#161b22"; ctx.fillRect(15, h - 115, w - 30, 100);
-            ctx.strokeStyle = "#95a5a6"; ctx.lineWidth = 3; ctx.strokeRect(15, h - 115, w - 30, 100);
+            ctx.fillStyle = "#161b22"; ctx.fillRect(15, h - 155, w - 30, 140);
+            ctx.strokeStyle = "#95a5a6"; ctx.lineWidth = 3; ctx.strokeRect(15, h - 155, w - 30, 140);
         }
-
-        function recalibrateCanvases() {
-            Object.keys(canvases).forEach(key => {
-                const rect = canvases[key].getBoundingClientRect();
-                canvases[key].width = rect.width || 240;
-                canvases[key].height = rect.height || 280;
-            });
-        }
-        window.addEventListener('resize', recalibrateCanvases);
-        setTimeout(recalibrateCanvases, 50);
 
         function masterAnimationLoop() {
             let basePA = (gasMolesA * 8.314 * globalTemp) / 22;
@@ -1086,4 +1595,4 @@
         masterAnimationLoop();
     </script>
 </body>
-</html>
+</html> 
